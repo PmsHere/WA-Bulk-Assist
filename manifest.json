@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "WA Bulk Assist (Manual Send)",
+  "version": "1.0.0",
+  "description": "Queues WhatsApp Web chats one at a time with a countdown timer and auto-opened contact info. All messages are still typed/sent manually by you.",
+  "permissions": ["storage", "alarms", "tabs", "scripting"],
+  "host_permissions": ["https://web.whatsapp.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "WA Bulk Assist"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
